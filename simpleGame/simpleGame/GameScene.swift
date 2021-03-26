@@ -24,7 +24,7 @@ class GameScene: SKScene {
 //        player = SKSpriteNode(texture: texture)
 //        player.position = CGPoint(x: size.width * 0.1, y: 10)
 //
-//        
+//
 //
 //
 //      // Add the monster to the scene
@@ -86,16 +86,22 @@ class GameScene: SKScene {
         self.enumerateChildNodes(withName: "Car", using: ({
             (node,error) in
             
-            node.position.x -= 2
+            node.position.x += 2
             
-            if node.position.x < -((self.scene?.size.width)!){
-                node.position.x += (self.scene?.size.width)! * 3
+           // if node.position.x > ((self.scene?.size.width)!){
+//                node.position.x -= (self.scene?.size.width)! * 3
+//            }
+            if node.position.x - 100 > ((self.scene?.size.width)!){
+                node.position.x = -(self.scene?.size.width)!
             }
+            
+            
+            
         }) )
         
         
     }
-    
+ 
     
     func createPlayer() {
 //
@@ -133,7 +139,7 @@ class GameScene: SKScene {
         for i in 0...3 {
             let car = SKSpriteNode(imageNamed: "car1.jpeg")
             car.name = "Car"
-            car.size = CGSize(width: (self.scene?.size.width)!, height: 250)
+            car.size = CGSize(width: 100, height: 100)
             car.anchorPoint =  CGPoint(x: 0.5, y: 0.5)
             car.position = CGPoint(x: CGFloat(i)*ground.size.width, y: -(self.frame.size.height / 2))
             

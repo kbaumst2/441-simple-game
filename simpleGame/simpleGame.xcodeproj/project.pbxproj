@@ -16,9 +16,12 @@
 		443E50DE260B7DBD00D44B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443E50DD260B7DBD00D44B93 /* Assets.xcassets */; };
 		443E50E9260B7DBD00D44B93 /* simpleGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E50E8260B7DBD00D44B93 /* simpleGameTests.swift */; };
 		443E50F4260B7DBD00D44B93 /* simpleGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E50F3260B7DBD00D44B93 /* simpleGameUITests.swift */; };
-		443E5117260B884800D44B93 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E510F260B84F300D44B93 /* car.png */; };
 		443E511C260B887500D44B93 /* car1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 443E511B260B887500D44B93 /* car1.jpeg */; };
 		443E5121260E242600D44B93 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E5120260E242500D44B93 /* ground.png */; };
+		443E5129260E64F700D44B93 /* car2.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E5128260E64F700D44B93 /* car2.png */; };
+		443E512E260E656000D44B93 /* car3.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E512D260E656000D44B93 /* car3.png */; };
+		443E5133260E660600D44B93 /* car.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 443E5132260E660600D44B93 /* car.jpeg */; };
+		443E5138260E66A000D44B93 /* car5.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E5137260E66A000D44B93 /* car5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +57,12 @@
 		443E50EF260B7DBD00D44B93 /* simpleGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = simpleGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		443E50F3260B7DBD00D44B93 /* simpleGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleGameUITests.swift; sourceTree = "<group>"; };
 		443E50F5260B7DBD00D44B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		443E510F260B84F300D44B93 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		443E511B260B887500D44B93 /* car1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car1.jpeg; sourceTree = "<group>"; };
 		443E5120260E242500D44B93 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
+		443E5128260E64F700D44B93 /* car2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car2.png; sourceTree = "<group>"; };
+		443E512D260E656000D44B93 /* car3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car3.png; sourceTree = "<group>"; };
+		443E5132260E660600D44B93 /* car.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car.jpeg; sourceTree = "<group>"; };
+		443E5137260E66A000D44B93 /* car5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +113,11 @@
 		443E50CF260B7DBA00D44B93 /* simpleGame */ = {
 			isa = PBXGroup;
 			children = (
+				443E5132260E660600D44B93 /* car.jpeg */,
+				443E512D260E656000D44B93 /* car3.png */,
+				443E5128260E64F700D44B93 /* car2.png */,
+				443E5137260E66A000D44B93 /* car5.png */,
 				443E511B260B887500D44B93 /* car1.jpeg */,
-				443E510F260B84F300D44B93 /* car.png */,
 				443E50D0260B7DBA00D44B93 /* AppDelegate.swift */,
 				443E50D2260B7DBA00D44B93 /* GameScene.sks */,
 				443E50D4260B7DBA00D44B93 /* Actions.sks */,
@@ -245,11 +254,14 @@
 			files = (
 				443E50DC260B7DBA00D44B93 /* Main.storyboard in Resources */,
 				443E50D3260B7DBA00D44B93 /* GameScene.sks in Resources */,
+				443E512E260E656000D44B93 /* car3.png in Resources */,
 				443E5121260E242600D44B93 /* ground.png in Resources */,
-				443E5117260B884800D44B93 /* car.png in Resources */,
+				443E5129260E64F700D44B93 /* car2.png in Resources */,
 				443E50DE260B7DBD00D44B93 /* Assets.xcassets in Resources */,
+				443E5138260E66A000D44B93 /* car5.png in Resources */,
 				443E511C260B887500D44B93 /* car1.jpeg in Resources */,
 				443E50D5260B7DBA00D44B93 /* Actions.sks in Resources */,
+				443E5133260E660600D44B93 /* car.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
