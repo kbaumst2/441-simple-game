@@ -36,6 +36,15 @@ class GameView: UIView {
     
     @objc func update(){  //do collision detection here
         
+        
+        if(basketX + 100 > Int(self.bounds.maxX)){
+            direction = "left"
+        }
+        
+        if( basketX < Int(self.bounds.minX)){
+            direction = "right"
+        }
+        
         if(direction ==  "left"){
             basketX -= 2
         }
@@ -43,6 +52,7 @@ class GameView: UIView {
             basketX += 2
         }
         
+      
 //        if(touchX > basketX ) {
 //            print("moving right")
 //            direction = "right"
