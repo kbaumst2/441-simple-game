@@ -18,6 +18,7 @@
 		443E51C7260E6E1700D44B93 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51C6260E6E1700D44B93 /* GameView.swift */; };
 		443E51CC260E6EED00D44B93 /* basket.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 443E51CB260E6EED00D44B93 /* basket.jpg */; };
 		443E51D1260E6F9B00D44B93 /* basket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D0260E6F9B00D44B93 /* basket1.png */; };
+		443E51D6260FD0F100D44B93 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D5260FD0F100D44B93 /* apple.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		443E51C6260E6E1700D44B93 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		443E51CB260E6EED00D44B93 /* basket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = basket.jpg; sourceTree = "<group>"; };
 		443E51D0260E6F9B00D44B93 /* basket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basket1.png; sourceTree = "<group>"; };
+		443E51D5260FD0F100D44B93 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		443E5192260E6DC900D44B93 /* catchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				443E51D5260FD0F100D44B93 /* apple.png */,
 				443E51CB260E6EED00D44B93 /* basket.jpg */,
 				443E51D0260E6F9B00D44B93 /* basket1.png */,
 				443E51C6260E6E1700D44B93 /* GameView.swift */,
@@ -244,6 +247,7 @@
 				443E519D260E6DCB00D44B93 /* Assets.xcassets in Resources */,
 				443E519B260E6DC900D44B93 /* Main.storyboard in Resources */,
 				443E51D1260E6F9B00D44B93 /* basket1.png in Resources */,
+				443E51D6260FD0F100D44B93 /* apple.png in Resources */,
 				443E51CC260E6EED00D44B93 /* basket.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
