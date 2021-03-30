@@ -19,6 +19,10 @@
 		443E51CC260E6EED00D44B93 /* basket.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 443E51CB260E6EED00D44B93 /* basket.jpg */; };
 		443E51D1260E6F9B00D44B93 /* basket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D0260E6F9B00D44B93 /* basket1.png */; };
 		443E51D6260FD0F100D44B93 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D5260FD0F100D44B93 /* apple.png */; };
+		443E51E5261216CD00D44B93 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443E51E3261216CC00D44B93 /* DataModel.xcdatamodeld */; };
+		443E51F12612188000D44B93 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F02612188000D44B93 /* Scoreboard.swift */; };
+		443E51FB2612BE7100D44B93 /* Scoreboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */; };
+		443E51FC2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		443E51CB260E6EED00D44B93 /* basket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = basket.jpg; sourceTree = "<group>"; };
 		443E51D0260E6F9B00D44B93 /* basket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basket1.png; sourceTree = "<group>"; };
 		443E51D5260FD0F100D44B93 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		443E51E4261216CD00D44B93 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		443E51F02612188000D44B93 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,8 @@
 		443E5187260E6DC800D44B93 = {
 			isa = PBXGroup;
 			children = (
+				443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */,
+				443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */,
 				443E5192260E6DC900D44B93 /* catchingGame */,
 				443E51A9260E6DCC00D44B93 /* catchingGameTests */,
 				443E51B4260E6DCC00D44B93 /* catchingGameUITests */,
@@ -108,9 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				443E51D5260FD0F100D44B93 /* apple.png */,
+				443E51F02612188000D44B93 /* Scoreboard.swift */,
 				443E51CB260E6EED00D44B93 /* basket.jpg */,
 				443E51D0260E6F9B00D44B93 /* basket1.png */,
 				443E51C6260E6E1700D44B93 /* GameView.swift */,
+				443E51E3261216CC00D44B93 /* DataModel.xcdatamodeld */,
 				443E5193260E6DC900D44B93 /* AppDelegate.swift */,
 				443E5195260E6DC900D44B93 /* SceneDelegate.swift */,
 				443E5197260E6DC900D44B93 /* ViewController.swift */,
@@ -274,9 +286,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				443E5198260E6DC900D44B93 /* ViewController.swift in Sources */,
+				443E51E5261216CD00D44B93 /* DataModel.xcdatamodeld in Sources */,
+				443E51FB2612BE7100D44B93 /* Scoreboard+CoreDataClass.swift in Sources */,
 				443E5194260E6DC900D44B93 /* AppDelegate.swift in Sources */,
 				443E51C7260E6E1700D44B93 /* GameView.swift in Sources */,
+				443E51FC2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift in Sources */,
 				443E5196260E6DC900D44B93 /* SceneDelegate.swift in Sources */,
+				443E51F12612188000D44B93 /* Scoreboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +625,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		443E51E3261216CC00D44B93 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				443E51E4261216CD00D44B93 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 443E51E4261216CD00D44B93 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 443E5188260E6DC800D44B93 /* Project object */;
 }
