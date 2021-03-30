@@ -34,10 +34,31 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLl-zk-ipg">
+                                        <rect key="frame" x="123" y="144" width="156" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Lives: 3">
+                                                <attributes>
+                                                    <font key="NSFont" size="36" name="TrebuchetMS"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4C-5Y-9TZ">
+                                        <rect key="frame" x="93" y="517" width="164" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="catchesLabel" destination="2KC-TG-LyL" id="eHG-9S-sWW"/>
+                                    <outlet property="correctFruitLabel" destination="k4C-5Y-9TZ" id="nif-4q-lSG"/>
+                                    <outlet property="livesLabel" destination="ZLl-zk-ipg" id="eq1-vp-lZm"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -135,7 +156,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frG-5n-QFo">
-                                <rect key="frame" x="31" y="90" width="352" height="98"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.62729212430000003" blue="0.52374637000000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -153,14 +174,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9O-Ry-rsH">
                                 <rect key="frame" x="31" y="241" width="352" height="478"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">∙ Catch the falling objects specfied in the top left corner in the basket.                                                                        ∙  Click to the right of the basket to move the basket right, and same for left                                                                        ∙ You must only catch the items specified                                                         ∙ If you mess up more than 3 times, you will have to start the level over                                                 ∙ Each level, the speed of the objects falling will increase</mutableString>
+                                <string key="text">∙ Catch the falling objects specfied in the top left corner in the basket.                                                                        ∙  Click to the right of the basket to move the basket right, and same for left                                                                        ∙ You must only catch the items specified                                                         ∙ If you mess up more than 3 times, you will have to start the level over                                                 ∙ Each level, the speed of the objects falling will increase</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GJU-6W-1GM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.91945583569902012" green="1" blue="0.86278868012777843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWN-Pg-tdA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

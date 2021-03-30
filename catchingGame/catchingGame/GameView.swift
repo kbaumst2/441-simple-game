@@ -19,18 +19,31 @@ class GameView: UIView {
 
     var basketImage = UIImage(imageLiteralResourceName: "basket1.png")
     var appleImage = UIImage(imageLiteralResourceName: "apple.png")
+    var bananaImage = UIImage(imageLiteralResourceName: "banana.png")
+    var orangeImage = UIImage(imageLiteralResourceName: "orange.png")
+    var kiwiImage = UIImage(imageLiteralResourceName: "kiwi.png")
+    var strawberryImage = UIImage(imageLiteralResourceName: "strawberry.png")
+    var pineappleImage = UIImage(imageLiteralResourceName: "pineapple.png")
+    var fruitToCatch : String = "apple"
+    
+    let fruitOptions = ["apple", "banana", "orange", "kiwi", "strawberry", "pineapple"]
+
     @IBOutlet var catchesLabel: UILabel!
+    @IBOutlet var livesLabel: UILabel!
+    @IBOutlet var correctFruitLabel: UILabel!
+
    
     var basketX = 0
     var basketY = 100   //put at 500
     var touchX = -1
     var direction = "right"
     
-    var fruitCoordinates : [(Int, Int)] = []
+    var fruitCoordinates : [(String, (Int, Int))] = []
     var appleX = 0
     var appleY = 0
     var level = 1   //as level goes up, speed of fruit falling increases as well as freq they appear
     var catches = 0
+    var lives = 3
     let start = DispatchTime.now()
     var fruitsCaught : [Bool] = []
     var intervalsUsed : [Int] = []
@@ -46,6 +59,8 @@ class GameView: UIView {
         basketImage = self.resizeImage(image: basketImage, targetSize: CGSize(width: 100.0, height: 200.0))
         basketImage.draw(at: CGPoint(x: CGFloat(basketX), y: CGFloat(basketY)))
         
+        
+        correctFruitLabel.text = fruitToCatch
         print("start")
         print(start.uptimeNanoseconds)
         let end = DispatchTime.now()
@@ -57,9 +72,11 @@ class GameView: UIView {
             print("RELEASING NEW FRUIT")
             //release a new fruit (addto fruitcoordinates and fruitsCaught - set to false)
             intervalsUsed.append(Int(timeInterval))
-            let random = Int.random(in: Int(self.bounds.minX) + 10 ... Int(self.bounds.maxX) - 10)
+            let random = Int.random(in: Int(self.bounds.minX) + 10 ... Int(self.bounds.maxX) - 50)
             fruitsCaught.append(false)
-            fruitCoordinates.append((random,0))
+            
+            let fruit = fruitOptions.randomElement()!
+            fruitCoordinates.append( (fruit, (random,0) ))
 //            appleImage = self.resizeImage(image: appleImage, targetSize: CGSize(width: 50.0, height: 50.0))
 //            appleX = random
 //            appleImage.draw(at: CGPoint(x: CGFloat(appleX), y: CGFloat(appleY)) )
@@ -68,11 +85,48 @@ class GameView: UIView {
         //go through list of all fruits and draw them at their coordinates
         if(fruitCoordinates.count > 0){
             for i in 0...fruitCoordinates.count - 1{
-                appleImage = self.resizeImage(image: appleImage, targetSize: CGSize(width: 50.0, height: 50.0))
-                if(fruitsCaught[i] == false ){
-                    appleImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].0), y: CGFloat(fruitCoordinates[i].1)) )
+                
+                if(fruitCoordinates[i].0 == "apple") {
+                    appleImage = self.resizeImage(image: appleImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        appleImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
                 }
                 
+                else if(fruitCoordinates[i].0 == "strawberry") {
+                    strawberryImage = self.resizeImage(image: strawberryImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        strawberryImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
+                }
+                
+                else if(fruitCoordinates[i].0 == "kiwi") {
+                    kiwiImage = self.resizeImage(image: kiwiImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        kiwiImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
+                }
+                
+                else if(fruitCoordinates[i].0 == "banana") {
+                    bananaImage = self.resizeImage(image: bananaImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        bananaImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
+                }
+                
+                else if(fruitCoordinates[i].0 == "pineapple") {
+                    pineappleImage = self.resizeImage(image: pineappleImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        pineappleImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
+                }
+                
+                else if(fruitCoordinates[i].0 == "orange") {
+                    orangeImage = self.resizeImage(image: orangeImage, targetSize: CGSize(width: 50.0, height: 50.0))
+                    if(fruitsCaught[i] == false ){
+                        orangeImage.draw(at: CGPoint(x: CGFloat(fruitCoordinates[i].1.0), y: CGFloat(fruitCoordinates[i].1.1)) )
+                    }
+                }
             }
         }
         
@@ -102,10 +156,10 @@ class GameView: UIView {
 //        }
 //
         
-        checkForCatches()
+        checkForCatchesAndMisses()
         if(fruitCoordinates.count > 0) {
             for i in 0...fruitCoordinates.count-1 {
-                fruitCoordinates[i].1 += level
+                fruitCoordinates[i].1.1 += level
             }
         }
         
@@ -155,16 +209,55 @@ class GameView: UIView {
     }
     
     
-    func checkForCatches(){
+    func checkForCatchesAndMisses(){
         if(fruitCoordinates.count > 0) {
             for i in 0...fruitCoordinates.count-1 {
-                if(fruitCoordinates[i].1 < basketY + 50 && fruitCoordinates[i].1 > basketY &&
-                    fruitCoordinates[i].0 <= basketX + 100 &&  fruitCoordinates[i].0 >= basketX && fruitsCaught[i] == false ) {
+                if((fruitCoordinates[i].1.1 < basketY + 50 && fruitCoordinates[i].1.1 > basketY) &&
+                    (fruitCoordinates[i].1.0 <= basketX + 100 &&  fruitCoordinates[i].1.0 >= basketX) && fruitsCaught[i] == false  && fruitCoordinates[i].0 == fruitToCatch ){
+                    //caught the correct fruit
+                    print("CORRECT!")
                     catches += 1
                     catchesLabel.text = "Catches: " + String(catches)
                     fruitsCaught[i] = true
+                    
+                    //REMOVE ELEMENT FROM FRUITS COORDIINATES / CAUGHT ?
+                    
+                    fruitToCatch = fruitOptions.randomElement()!
+                    correctFruitLabel.text = fruitToCatch
+                    fruitCoordinates.remove(at: i)
+                    fruitsCaught.remove(at: i)
+                }
+                
+                else if((fruitCoordinates[i].1.1 < basketY + 50 && fruitCoordinates[i].1.1 > basketY) &&
+                            (fruitCoordinates[i].1.0 <= basketX + 100 &&  fruitCoordinates[i].1.0 >= basketX) && fruitsCaught[i] == false  && fruitCoordinates[i].0 != fruitToCatch ){
+                    //caught the wrong fruit
+                            print("CAUGHT WRONG FRUIT")
+                            lives -= 1
+                            livesLabel.text = "Lives: " + String(lives)
+                    //REMOVE ELEMENT FROM FRUITS COORDIINATES / CAUGHT ?
+                            fruitsCaught[i] = true
+                            fruitCoordinates.remove(at: i)
+                            fruitsCaught.remove(at: i)
+                            
+                        }
+                
+                //CHECK IF COORDINATES PASSSED BASKET - MISSED
+                else if(fruitCoordinates[i].0 == fruitToCatch){
+                    if (fruitCoordinates[i].1.1 > basketY + 50){
+                        print("MISSED FRUIT")
+                        fruitsCaught[i] = true
+                        //REMOVE ELEMENT FROM FRUITS COORDIINATES / CAUGHT ?
+                        lives -= 1
+                        livesLabel.text = "Lives: " + String(lives)
+                        fruitsCaught[i] = true
+                        fruitCoordinates.remove(at: i)
+                        fruitsCaught.remove(at: i)
+                        
+                    }
                 }
             }
+            
+            
         }
     }
     

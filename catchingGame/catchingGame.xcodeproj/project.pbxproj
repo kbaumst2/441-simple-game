@@ -23,6 +23,11 @@
 		443E51F12612188000D44B93 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F02612188000D44B93 /* Scoreboard.swift */; };
 		443E51FB2612BE7100D44B93 /* Scoreboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */; };
 		443E51FC2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */; };
+		44504F452613A21700A9D7CA /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F402613A21700A9D7CA /* banana.png */; };
+		44504F462613A21700A9D7CA /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F412613A21700A9D7CA /* strawberry.png */; };
+		44504F472613A21700A9D7CA /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F422613A21700A9D7CA /* orange.png */; };
+		44504F482613A21700A9D7CA /* kiwi.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F432613A21700A9D7CA /* kiwi.png */; };
+		44504F492613A21700A9D7CA /* pineapple.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F442613A21700A9D7CA /* pineapple.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		443E51F02612188000D44B93 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		44504F402613A21700A9D7CA /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		44504F412613A21700A9D7CA /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
+		44504F422613A21700A9D7CA /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		44504F432613A21700A9D7CA /* kiwi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiwi.png; sourceTree = "<group>"; };
+		44504F442613A21700A9D7CA /* pineapple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pineapple.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,11 @@
 		443E5192260E6DC900D44B93 /* catchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				44504F402613A21700A9D7CA /* banana.png */,
+				44504F432613A21700A9D7CA /* kiwi.png */,
+				44504F422613A21700A9D7CA /* orange.png */,
+				44504F442613A21700A9D7CA /* pineapple.png */,
+				44504F412613A21700A9D7CA /* strawberry.png */,
 				443E51D5260FD0F100D44B93 /* apple.png */,
 				443E51F02612188000D44B93 /* Scoreboard.swift */,
 				443E51CB260E6EED00D44B93 /* basket.jpg */,
@@ -256,11 +271,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				443E51A0260E6DCB00D44B93 /* LaunchScreen.storyboard in Resources */,
+				44504F482613A21700A9D7CA /* kiwi.png in Resources */,
 				443E519D260E6DCB00D44B93 /* Assets.xcassets in Resources */,
 				443E519B260E6DC900D44B93 /* Main.storyboard in Resources */,
 				443E51D1260E6F9B00D44B93 /* basket1.png in Resources */,
+				44504F492613A21700A9D7CA /* pineapple.png in Resources */,
+				44504F452613A21700A9D7CA /* banana.png in Resources */,
 				443E51D6260FD0F100D44B93 /* apple.png in Resources */,
+				44504F462613A21700A9D7CA /* strawberry.png in Resources */,
 				443E51CC260E6EED00D44B93 /* basket.jpg in Resources */,
+				44504F472613A21700A9D7CA /* orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
