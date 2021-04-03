@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CoreDataNotifications{
+class CoreDataScoreboard{
     
     private static func setContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

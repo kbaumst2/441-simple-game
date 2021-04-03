@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     @objc func update(){
         //print(update())
-        print("update")
+        //print("update")
         gameView.update()
         
     }
