@@ -187,6 +187,9 @@ class GameView: UIView {
             fruitsMissed.removeAll()
             fruitsCaught.removeAll()
             level += 1
+            if(appearRate > 1){
+                appearRate -= 1
+            }
             levelLabel.text = "Level: " + String(level)
             catches = 0
             catchesLabel.text = "Catches: " + String(catches)
