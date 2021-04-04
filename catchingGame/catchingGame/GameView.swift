@@ -25,6 +25,8 @@ class GameView: UIView {
    // var strawberryImage = UIImage(imageLiteralResourceName: "strawberry.png")
     var pineappleImage = UIImage(imageLiteralResourceName: "pineapple.png")
     var fruitToCatch : String = "apple"
+    var showLevelUpLabel = false
+    
     
     
     var fruitOptions : [String : UIImage] = [ : ]
@@ -34,12 +36,18 @@ class GameView: UIView {
     @IBOutlet var livesLabel: UILabel!
     @IBOutlet var nextCatch: UIImageView!
     @IBOutlet var levelLabel: UILabel!
+    @IBOutlet var startOverOrLevelUpLabel: UILabel!
     
-   
+    var changeStartMessageToLevelUp = false      //change this to false after 3 seconds
+    var changeStartMessageToRestart = false
+    var startGameMessage = DispatchTime.now()
+    //var timeDifference = DispatchTime.now()
+    
     var basketX = 0
     var basketY = 300   //put at 500
     var touchX = -1
     var direction = "right"
+    var started = false
     
     var fruitCoordinates : [(String, (Int, Int))] = []
     var appleX = 0
@@ -60,10 +68,13 @@ class GameView: UIView {
    // var touchY = -1
     
     override func draw(_ rect: CGRect) {
+
+//        let now = DispatchTime.now()
+//        let dif = now.uptimeNanoseconds - startGameMessage.uptimeNanoseconds // Difference in nano seconds
+//        let timeInterval = Double(dif) / 1_000_000_000
+
         
-        
-        
-       // level = CoreDataScoreboard.loadWithCompletion(completion: <#T##([Scoreboard]) -> Void#>)
+            changeStartMessageToRestart = false
         levelLabel.text = "Level : " + String(level)
         
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage, "pineapple" : pineappleImage]
@@ -73,8 +84,8 @@ class GameView: UIView {
         //let fruitImages = [ appleImage, bananaImage, orangeImage, kiwiImage, strawberryImage, pineappleImage ]
         
         nextCatch.image = fruitOptions[fruitToCatch]
-       // print("start")
-     //   print(start.uptimeNanoseconds)
+
+        
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // Difference in nano seconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
@@ -86,6 +97,7 @@ class GameView: UIView {
         //HERE PUT LEVEL UP LABEL WAIT 5 SECONDS THEN GET RID OF LABEL TEXT
         if(Int(timeInterval) % appearRate == 0 && intervalsUsed.contains(Int(timeInterval)) == false){
             print("RELEASING NEW FRUIT")
+            started = true
             //release a new fruit (addto fruitcoordinates and fruitsCaught - set to false)
             intervalsUsed.append(Int(timeInterval))
             let random = Int.random(in: Int(self.bounds.minX) + 10 ... Int(self.bounds.maxX) - 50)
@@ -96,9 +108,6 @@ class GameView: UIView {
             fruitCoordinates.append( (fruit, (random,0) ))
             
             
-//            appleImage = self.resizeImage(image: appleImage, targetSize: CGSize(width: 50.0, height: 50.0))
-//            appleX = random
-//            appleImage.draw(at: CGPoint(x: CGFloat(appleX), y: CGFloat(appleY)) )
             
         }
         
@@ -145,12 +154,6 @@ class GameView: UIView {
             }
         }
         
-        //print("Time \(timeInterval) seconds")
-//        appleImage = self.resizeImage(image: appleImage, targetSize: CGSize(width: 50.0, height: 50.0))
-//        appleX = Int(self.bounds.maxX / 2)
-//        appleImage.draw(at: CGPoint(x: CGFloat(appleX), y: CGFloat(appleY)) )
-        //choose fruits randomly from list,
-        //every certain seconds(changes with level) , send a fruit down at speed (changes with level)
         
         
     }
@@ -182,7 +185,7 @@ class GameView: UIView {
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage,  "pineapple" : pineappleImage]
    //     checkForCatchesAndMisses()
         
-        if(catches == 3 ){
+        if(catches == 1 ){
             fruitCoordinates.removeAll()
             fruitsMissed.removeAll()
             fruitsCaught.removeAll()
@@ -195,14 +198,42 @@ class GameView: UIView {
             catchesLabel.text = "Catches: " + String(catches)
             lives = 3
             livesLabel.text = "Lives: " + String(lives)
+            
+            
+            changeStartMessageToLevelUp = true
+            self.startOverOrLevelUpLabel.alpha = 1
+            startOverOrLevelUpLabel.text = "Level Up!"
+            startOverOrLevelUpLabel.isHidden = false
+            self.startOverOrLevelUpLabel.alpha = 1
+            UIView.animate(withDuration: 5.0, animations: { () -> Void in
+                self.startOverOrLevelUpLabel.alpha = 0
+            })
+            
+            startGameMessage = DispatchTime.now()
+
+            
         }
         
-        if(lives == 0) {
+        if(lives == 0 && started == true) {
+            showLevelUpLabel = true
+            print("LOST ALL LIVEs")
             catches = 0
             catchesLabel.text = "Catches: " + String(catches)
-            lives = 0
+            lives = 3
             livesLabel.text = "Lives: " + String(lives)
             //START OVER SCREEN
+//            startOverOrLevelUpLabel.isHidden = false
+            startGameMessage = DispatchTime.now()
+            startOverOrLevelUpLabel.text = "You lost all your lives! Starting level over"
+            print("here")
+            startOverOrLevelUpLabel.isHidden = false
+            self.startOverOrLevelUpLabel.alpha = 1
+            UIView.animate(withDuration: 5.0, animations: { () -> Void in
+                self.startOverOrLevelUpLabel.alpha = 0
+            })
+            changeStartMessageToRestart = true
+            
+            started = false
         }
         
         
@@ -229,9 +260,7 @@ class GameView: UIView {
         if(direction ==  "right"){
             basketX += 2
         }
-        
-    
-       
+
         setNeedsDisplay()  //calls draw function (like a flag)
     }
     
