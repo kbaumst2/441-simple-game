@@ -20,7 +20,6 @@
 		443E51D1260E6F9B00D44B93 /* basket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D0260E6F9B00D44B93 /* basket1.png */; };
 		443E51D6260FD0F100D44B93 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 443E51D5260FD0F100D44B93 /* apple.png */; };
 		443E51E5261216CD00D44B93 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443E51E3261216CC00D44B93 /* DataModel.xcdatamodeld */; };
-		443E51F12612188000D44B93 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F02612188000D44B93 /* Scoreboard.swift */; };
 		443E51FB2612BE7100D44B93 /* Scoreboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */; };
 		443E51FC2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */; };
 		44504F452613A21700A9D7CA /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 44504F402613A21700A9D7CA /* banana.png */; };
@@ -67,7 +66,6 @@
 		443E51D0260E6F9B00D44B93 /* basket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basket1.png; sourceTree = "<group>"; };
 		443E51D5260FD0F100D44B93 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		443E51E4261216CD00D44B93 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		443E51F02612188000D44B93 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		443E51F92612BE7100D44B93 /* Scoreboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		443E51FA2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		44504F402613A21700A9D7CA /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				44504F442613A21700A9D7CA /* pineapple.png */,
 				44504F412613A21700A9D7CA /* strawberry.png */,
 				443E51D5260FD0F100D44B93 /* apple.png */,
-				443E51F02612188000D44B93 /* Scoreboard.swift */,
 				443E51CB260E6EED00D44B93 /* basket.jpg */,
 				443E51D0260E6F9B00D44B93 /* basket1.png */,
 				443E51C6260E6E1700D44B93 /* GameView.swift */,
@@ -312,7 +309,6 @@
 				443E51C7260E6E1700D44B93 /* GameView.swift in Sources */,
 				443E51FC2612BE7100D44B93 /* Scoreboard+CoreDataProperties.swift in Sources */,
 				443E5196260E6DC900D44B93 /* SceneDelegate.swift in Sources */,
-				443E51F12612188000D44B93 /* Scoreboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
