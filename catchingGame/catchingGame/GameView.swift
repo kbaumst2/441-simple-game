@@ -27,6 +27,7 @@ class GameView: UIView {
     var pineappleImage = UIImage(imageLiteralResourceName: "pineapple.png")
     var fruitToCatch : String = "apple"
     var showLevelUpLabel = false
+    var increaseSpeed = false
     
     var gameHasStarted = false
     
@@ -38,7 +39,7 @@ class GameView: UIView {
     @IBOutlet var catchesLabel: UILabel!
     @IBOutlet var livesLabel: UILabel!
     @IBOutlet var nextCatch: UIImageView!
-    @IBOutlet var levelLabel: UILabel!
+    @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var startOverOrLevelUpLabel: UILabel!
     
     var changeStartMessageToLevelUp = false      //change this to false after 3 seconds
@@ -46,11 +47,14 @@ class GameView: UIView {
     var startGameMessage = DispatchTime.now()
     //var timeDifference = DispatchTime.now()
     
+    var checkForPause = false
     var basketX = 0
     var basketY = 300   //put at 500
     var touchX = -1
     var direction = "right"
     var started = false
+    var highScoreOverall : Int64 = 0
+    var pause = false
     
     var fruitCoordinates : [(String, (Int, Int))] = []
     var appleX = 0
@@ -78,27 +82,38 @@ class GameView: UIView {
 //        let timeInterval = Double(dif) / 1_000_000_000
 
         
+//        let now = DispatchTime.now()
+//        let dif = now.uptimeNanoseconds - startGameMessage.uptimeNanoseconds // Difference in nano seconds
+//        let timeInterval = Double(dif) / 1_000_000_000
+//        
+//        if(timeInterval > 3 &&){
+//            
+//        }
+        
         
         self.fetchScoreboard()
-        
+        print("HIGH SCORE DRAW 1: " + String(highScoreOverall))
+
         //fetch the scoreboards. If the length of scoarboards is 0, then save one
         if(scoreboard.count == 0 ){
             print("SAVING SCOREBOARD 1ST TIME")
-            level = 1
+            //level = 1
+            //highScoreOverall = 0
             //currentScoreboard.set
-            self.save(level: Int64(1))
+            self.save(highScore: Int64(0))
             gameHasStarted = true   //add this also to the database
         }
         
         else {
            // level = scoreboard[0].level
-            level = Int64(scoreboard[0].value(forKey: "level") as! Int)
-            print(scoreboard[0].value(forKey: "level"))
+            highScoreOverall = Int64(scoreboard[0].value(forKey: "highScore") as! Int)
+            print(scoreboard[0].value(forKey: "highScore"))
             print("not first time")
         }
     
        // changeStartMessageToRestart = false
-        levelLabel.text = "Level : " + String(level)
+        print("HIGH SCORE DRAW 2: " + String(highScoreOverall))
+        highScoreLabel.text = "High Score : " + String(highScoreOverall)
         
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage, "pineapple" : pineappleImage]
         basketImage = self.resizeImage(image: basketImage, targetSize: CGSize(width: 100.0, height: 200.0))
@@ -203,40 +218,44 @@ class GameView: UIView {
 //
 //        }
         
-        levelLabel.text = "Level : " + String(level)
+        
+        print("HIGH SCORE IN UPDATE: " + String(highScoreOverall))
+        highScoreLabel.text = "High Score : " + String(highScoreOverall)
         
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage,  "pineapple" : pineappleImage]
    //     checkForCatchesAndMisses()
         
-        if(catches == 1 ){
-            fruitCoordinates.removeAll()
-            fruitsMissed.removeAll()
-            fruitsCaught.removeAll()
-            level += 1
-            self.updateData(level: Int64(level), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
+        if(catches % 3 == 0 && catches > 1  && increaseSpeed == true){
             
+//            fruitCoordinates.removeAll()
+//            fruitsMissed.removeAll()
+//            fruitsCaught.removeAll()
+             level += 1
+//            self.updateData(level: Int64(level), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
+//
             if(appearRate > 1){
                 appearRate -= 1
             }
-            levelLabel.text = "Level: " + String(level)
-            catches = 0
-            catchesLabel.text = "Catches: " + String(catches)
-            lives = 3
-            livesLabel.text = "Lives: " + String(lives)
-            
-            
-            changeStartMessageToLevelUp = true
-            self.startOverOrLevelUpLabel.alpha = 1
-            startOverOrLevelUpLabel.text = "Level Up!"
-            startOverOrLevelUpLabel.isHidden = false
-            self.startOverOrLevelUpLabel.alpha = 1
-            UIView.animate(withDuration: 5.0, animations: { () -> Void in
-                self.startOverOrLevelUpLabel.alpha = 0
-            })
-            
-            startGameMessage = DispatchTime.now()
-
-            
+            increaseSpeed = false
+//            levelLabel.text = "Level: " + String(level)
+//            catches = 0
+//            catchesLabel.text = "Catches: " + String(catches)
+//            lives = 3
+//            livesLabel.text = "Lives: " + String(lives)
+//
+//
+//            changeStartMessageToLevelUp = true
+//            self.startOverOrLevelUpLabel.alpha = 1
+//            startOverOrLevelUpLabel.text = "Level Up!"
+//            startOverOrLevelUpLabel.isHidden = false
+//            self.startOverOrLevelUpLabel.alpha = 1
+//            UIView.animate(withDuration: 5.0, animations: { () -> Void in
+//                self.startOverOrLevelUpLabel.alpha = 0
+//            })
+//
+//            startGameMessage = DispatchTime.now()
+//
+//
         }
         
         if(lives == 0 && started == true) {
@@ -249,7 +268,8 @@ class GameView: UIView {
             //START OVER SCREEN
 //            startOverOrLevelUpLabel.isHidden = false
             startGameMessage = DispatchTime.now()
-            startOverOrLevelUpLabel.text = "You lost all your lives! Starting level over"
+            startOverOrLevelUpLabel.text = "You lost all your lives! Starting over"
+            //TODO: change message to display score
             print("here")
             startOverOrLevelUpLabel.isHidden = false
             self.startOverOrLevelUpLabel.alpha = 1
@@ -257,8 +277,15 @@ class GameView: UIView {
                 self.startOverOrLevelUpLabel.alpha = 0
             })
             changeStartMessageToRestart = true
-            
             started = false
+            
+            
+            //TODO: check for high score, give message if new high score, update high score if it was different
+            
+            if(catches > highScoreOverall){
+                print("NEW HIGH SCORE!s")
+                self.updateData(newHighScore: Int64(catches), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
+            }
         }
         
         
@@ -284,9 +311,11 @@ class GameView: UIView {
         }
         if(direction ==  "right"){
             basketX += 2
-        }
-
-        setNeedsDisplay()  //calls draw function (like a flag)
+            }
+        
+            
+        setNeedsDisplay()
+        //setNeedsDisplay()  //calls draw function (like a flag)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -332,7 +361,20 @@ class GameView: UIView {
                     //caught the correct fruit
                     print("CORRECT!")
                     catches += 1
+                    increaseSpeed = true
+                    print("Catches: " + String(catches) + " High score: " + String(highScoreOverall))
+                    
+                    
+                    if(Int64(catches) > highScoreOverall){
+                        print("GREATER THAN")
+                        highScoreOverall = Int64(catches)
+                        self.updateData(newHighScore: Int64(catches), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
+                        print("NEW HIGH SCORE : " + String(highScoreOverall))
+                    }
+                    
                     catchesLabel.text = "Catches: " + String(catches)
+                    highScoreLabel.text = "High Score: " + String(highScoreOverall)
+                    print("TEXT IS: " + highScoreLabel.text!)
                     fruitsCaught[i] = true
                     
                     fruitToCatch = Array(fruitOptions.keys).randomElement()!
@@ -399,7 +441,7 @@ class GameView: UIView {
         
 
     
-    func save(level: Int64) {
+    func save(highScore: Int64) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
           return
         }
@@ -436,7 +478,7 @@ class GameView: UIView {
         /*
          With an NSManagedObject in hand, you set the name attribute using key-value coding. You must spell the KVC key (name in this case) exactly as it appears in your Data Model
          */
-        scoreboard.setValue(level, forKeyPath: "level")
+        scoreboard.setValue(Int64(catches), forKeyPath: "highScore")
         
         /*
          You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block. Finally, insert the new managed object into the people array so it shows up when the table view reloads.
@@ -452,7 +494,7 @@ class GameView: UIView {
     
     
     
-    func updateData(level: Int64, scoreboardToUpdate: Scoreboard) {
+    func updateData(newHighScore: Int64, scoreboardToUpdate: Scoreboard) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
           return
@@ -472,7 +514,7 @@ class GameView: UIView {
            With an NSManagedObject in hand, you set the name attribute using key-value coding. You must spell the KVC key (name in this case) exactly as it appears in your Data Model
            */
             print("UPDATING")
-            scoreboardToUpdate.setValue(level, forKey: "level")
+            scoreboardToUpdate.setValue(newHighScore, forKey: "highScore")
          print("UPDATED")
           
  //         print("\(scoreboard.value(forKey: "level"))")

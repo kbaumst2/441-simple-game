@@ -16,7 +16,7 @@ extension Scoreboard {
         return NSFetchRequest<Scoreboard>(entityName: "Scoreboard")
     }
 
-    @NSManaged public var level: Int64
+    @NSManaged public var highScore: Int64
 
 }
 

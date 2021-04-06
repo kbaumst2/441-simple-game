@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var gameView: GameView!
     
+    @IBOutlet weak var lostLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         //print(update())
         //print("update")
         gameView.update()
+
         
     }
 

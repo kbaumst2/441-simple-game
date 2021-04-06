@@ -64,27 +64,27 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyn-bO-3Qs">
-                                        <rect key="frame" x="124" y="522" width="145" height="56"/>
+                                        <rect key="frame" x="68" y="522" width="306" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Level: ">
+                                            <fragment content="High Score: ">
                                                 <attributes>
                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <font key="NSFont" metaFont="system" size="34"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzC-K4-Ued">
-                                        <rect key="frame" x="-25" y="321" width="425" height="193"/>
+                                        <rect key="frame" x="-11" y="321" width="425" height="193"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Level Up!">
+                                            <fragment content="You lost all your lives! Starting Over">
                                                 <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="system" size="30"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <font key="NSFont" metaFont="system" size="32"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -94,7 +94,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="catchesLabel" destination="2KC-TG-LyL" id="eHG-9S-sWW"/>
-                                    <outlet property="levelLabel" destination="Cyn-bO-3Qs" id="WBO-QH-a9s"/>
+                                    <outlet property="highScoreLabel" destination="Cyn-bO-3Qs" id="0iE-3s-cjw"/>
                                     <outlet property="livesLabel" destination="ZLl-zk-ipg" id="eq1-vp-lZm"/>
                                     <outlet property="nextCatch" destination="yE0-KC-yc9" id="VHe-na-QNB"/>
                                     <outlet property="startOverOrLevelUpLabel" destination="LzC-K4-Ued" id="uZd-Y3-2aV"/>
@@ -107,6 +107,7 @@
                     <navigationItem key="navigationItem" id="5Ha-dw-wSt"/>
                     <connections>
                         <outlet property="gameView" destination="uB2-FS-6QL" id="wNQ-kJ-39L"/>
+                        <outlet property="lostLabel" destination="LzC-K4-Ued" id="bMo-dK-Wh9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
