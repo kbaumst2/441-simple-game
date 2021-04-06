@@ -82,15 +82,15 @@ class GameView: UIView {
 //        let timeInterval = Double(dif) / 1_000_000_000
 
         
-//        let now = DispatchTime.now()
-//        let dif = now.uptimeNanoseconds - startGameMessage.uptimeNanoseconds // Difference in nano seconds
-//        let timeInterval = Double(dif) / 1_000_000_000
-//        
-//        if(timeInterval > 3 &&){
-//            
-//        }
+        let now = DispatchTime.now()
+        let dif = now.uptimeNanoseconds - startGameMessage.uptimeNanoseconds // Difference in nano seconds
+        let timeInterval = Double(dif) / 1_000_000_000
+
+        if(timeInterval > 5 && checkForPause ){
+            pause = false
+        }
         
-        
+        if(pause == false ) {
         self.fetchScoreboard()
         print("HIGH SCORE DRAW 1: " + String(highScoreOverall))
 
@@ -191,6 +191,8 @@ class GameView: UIView {
                 }
             }
         }
+            
+        }
         
         
         
@@ -268,7 +270,7 @@ class GameView: UIView {
             //START OVER SCREEN
 //            startOverOrLevelUpLabel.isHidden = false
             startGameMessage = DispatchTime.now()
-            startOverOrLevelUpLabel.text = "You lost all your lives! Starting over"
+            startOverOrLevelUpLabel.text = "You lost all your \n lives! Starting over"
             //TODO: change message to display score
             print("here")
             startOverOrLevelUpLabel.isHidden = false
@@ -279,7 +281,8 @@ class GameView: UIView {
             changeStartMessageToRestart = true
             started = false
             
-            
+            pause = true
+            checkForPause = true
             //TODO: check for high score, give message if new high score, update high score if it was different
             
             if(catches > highScoreOverall){
