@@ -67,19 +67,9 @@ class GameView: UIView {
     var fruitsMissed : [Bool] = []
     var intervalsUsed : [Int] = []
     var appearRate = 4   //lower as level goes up
-    //array of fruits - while the size is less than 13, choose a random fruit and add it do the fruitCoordinates
-    
-    
-    //num fruits = 13 because must catch 10, can miss 3
-    
-   // var touchY = -1
     
     
     override func draw(_ rect: CGRect) {
-
-//        let now = DispatchTime.now()
-//        let dif = now.uptimeNanoseconds - startGameMessage.uptimeNanoseconds // Difference in nano seconds
-//        let timeInterval = Double(dif) / 1_000_000_000
 
         
         let now = DispatchTime.now()
@@ -97,9 +87,6 @@ class GameView: UIView {
         //fetch the scoreboards. If the length of scoarboards is 0, then save one
         if(scoreboard.count == 0 ){
             print("SAVING SCOREBOARD 1ST TIME")
-            //level = 1
-            //highScoreOverall = 0
-            //currentScoreboard.set
             self.save(highScore: Int64(0))
             gameHasStarted = true   //add this also to the database
         }
@@ -111,7 +98,6 @@ class GameView: UIView {
             print("not first time")
         }
     
-       // changeStartMessageToRestart = false
         print("HIGH SCORE DRAW 2: " + String(highScoreOverall))
         highScoreLabel.text = "High Score : " + String(highScoreOverall)
         
@@ -119,7 +105,6 @@ class GameView: UIView {
         basketImage = self.resizeImage(image: basketImage, targetSize: CGSize(width: 100.0, height: 200.0))
         basketImage.draw(at: CGPoint(x: CGFloat(basketX), y: CGFloat(basketY)))
         
-        //let fruitImages = [ appleImage, bananaImage, orangeImage, kiwiImage, strawberryImage, pineappleImage ]
         
         nextCatch.image = fruitOptions[fruitToCatch]
 
@@ -203,61 +188,21 @@ class GameView: UIView {
     }
     
     @objc func update(){  //do collision detection here
-        //for all fruits in the fruitsCoords list add level
-        
-       // appleY += 2
-        
-        //in update - if the fruit y == baskey y, it is caught , if it goes past it, it goes away
-//        if(appleY < basketY + 10 && appleY > basketY - 10 ){
-//            catches += 1
-//            catchesLabel.text = "Catches: " + String(catches)
-//        }
-//
-        
-//        if(lives == 2){
-//            level = 5
-//            CoreDataScoreboard.saveNewScore(newScore: Int64(level))
-//
-//        }
+
         
         
         print("HIGH SCORE IN UPDATE: " + String(highScoreOverall))
         highScoreLabel.text = "High Score : " + String(highScoreOverall)
         
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage,  "pineapple" : pineappleImage]
-   //     checkForCatchesAndMisses()
         
         if(catches % 3 == 0 && catches > 1  && increaseSpeed == true){
             
-//            fruitCoordinates.removeAll()
-//            fruitsMissed.removeAll()
-//            fruitsCaught.removeAll()
              level += 1
-//            self.updateData(level: Int64(level), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
-//
             if(appearRate > 1){
                 appearRate -= 1
             }
             increaseSpeed = false
-//            levelLabel.text = "Level: " + String(level)
-//            catches = 0
-//            catchesLabel.text = "Catches: " + String(catches)
-//            lives = 3
-//            livesLabel.text = "Lives: " + String(lives)
-//
-//
-//            changeStartMessageToLevelUp = true
-//            self.startOverOrLevelUpLabel.alpha = 1
-//            startOverOrLevelUpLabel.text = "Level Up!"
-//            startOverOrLevelUpLabel.isHidden = false
-//            self.startOverOrLevelUpLabel.alpha = 1
-//            UIView.animate(withDuration: 5.0, animations: { () -> Void in
-//                self.startOverOrLevelUpLabel.alpha = 0
-//            })
-//
-//            startGameMessage = DispatchTime.now()
-//
-//
         }
         
         if(lives == 0 && started == true) {
@@ -269,8 +214,7 @@ class GameView: UIView {
             level = 1
             appearRate = 4
             livesLabel.text = "Lives: " + String(lives)
-            //START OVER SCREEN
-//            startOverOrLevelUpLabel.isHidden = false
+
             startGameMessage = DispatchTime.now()
             startOverOrLevelUpLabel.text = "You lost all your \n lives! Starting over"
             //TODO: change message to display score
@@ -305,7 +249,6 @@ class GameView: UIView {
         }
         
         
-       /// if(appleY )
         
         if(basketX + 100 > Int(self.bounds.maxX)){
             direction = "left"
@@ -324,7 +267,6 @@ class GameView: UIView {
         
             
         setNeedsDisplay()
-        //setNeedsDisplay()  //calls draw function (like a flag)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -455,47 +397,19 @@ class GameView: UIView {
           return
         }
         
-        
-        /*1.
-         Before you can save or retrieve anything from your Core Data store, you first need to get your hands on an NSManagedObjectContext. You can consider a managed object context as an in-memory “scratchpad” for working with managed objects.
-         Think of saving a new managed object to Core Data as a two-step process: first, you insert a new managed object into a managed object context; then, after you’re happy with your shiny new managed object, you “commit” the changes in your managed object context to save it to disk.
-         Xcode has already generated a managed object context as part of the new project’s template. Remember, this only happens if you check the Use Core Data checkbox at the beginning. This default managed object context lives as a property of the NSPersistentContainer in the application delegate. To access it, you first get a reference to the app delegate.
-         */
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        /*
-         An NSEntityDescription object is associated with a specific class instance
-         Class
-         NSEntityDescription
-         A description of an entity in Core Data.
-         
-         Retrieving an Entity with a Given Name here person
-         */
         let entity = NSEntityDescription.entity(forEntityName: "Scoreboard",
                                                 in: managedContext)!
         
-        
-        /*
-         Initializes a managed object and inserts it into the specified managed object context.
-         
-         init(entity: NSEntityDescription,
-         insertInto context: NSManagedObjectContext?)
-         */
+    
         let scoreboard = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
         
-        /*
-         With an NSManagedObject in hand, you set the name attribute using key-value coding. You must spell the KVC key (name in this case) exactly as it appears in your Data Model
-         */
         scoreboard.setValue(Int64(catches), forKeyPath: "highScore")
         
-        /*
-         You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block. Finally, insert the new managed object into the people array so it shows up when the table view reloads.
-         */
         do {
           try managedContext.save()
-         // scoreboard.append(s)
-          //tableView.reloadData()
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }
@@ -509,29 +423,15 @@ class GameView: UIView {
           return
         }
         
-        /*1.
-         Before you can save or retrieve anything from your Core Data store, you first need to get your hands on an NSManagedObjectContext. You can consider a managed object context as an in-memory “scratchpad” for working with managed objects.
-         Think of saving a new managed object to Core Data as a two-step process: first, you insert a new managed object into a managed object context; then, after you’re happy with your shiny new managed object, you “commit” the changes in your managed object context to save it to disk.
-         Xcode has already generated a managed object context as part of the new project’s template. Remember, this only happens if you check the Use Core Data checkbox at the beginning. This default managed object context lives as a property of the NSPersistentContainer in the application delegate. To access it, you first get a reference to the app delegate.
-         */
         let context = appDelegate.persistentContainer.viewContext
         
         do {
           
           
-          /*
-           With an NSManagedObject in hand, you set the name attribute using key-value coding. You must spell the KVC key (name in this case) exactly as it appears in your Data Model
-           */
             print("UPDATING")
             scoreboardToUpdate.setValue(newHighScore, forKey: "highScore")
          print("UPDATED")
           
- //         print("\(scoreboard.value(forKey: "level"))")
-
-          
-          /*
-           You commit your changes to person and save to disk by calling save on the managed object context. Note save can throw an error, which is why you call it using the try keyword within a do-catch block. Finally, insert the new managed object into the people array so it shows up when the table view reloads.
-           */
           do {
             try context.save()
             print("saved!")
@@ -553,16 +453,11 @@ class GameView: UIView {
           return
         }
         
-        /*Before you can do anything with Core Data, you need a managed object context. */
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        /*As the name suggests, NSFetchRequest is the class responsible for fetching from Core Data.
-         
-         Initializing a fetch request with init(entityName:), fetches all objects of a particular entity. This is what you do here to fetch all Person entities.
-         */
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Scoreboard")
         
-        /*You hand the fetch request over to the managed object context to do the heavy lifting. fetch(_:) returns an array of managed objects meeting the criteria specified by the fetch request.*/
+
         do {
           scoreboard = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
@@ -574,70 +469,7 @@ class GameView: UIView {
     
     
     
-//    func fetchLevel(){
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Scoreboard")
-//        let predicate = NSPredicate(format: "level = %@") // Specify your condition here
-//    // Or for integer value
-//    // let predicate = NSPredicate(format: "age > %d", argumentArray: [10])
-//
-//        fetch.predicate = predicate
-//
-//        do {
-//
-//          let result = try context.fetch(fetch)
-//          for data in result as! [NSManagedObject] {
-//            print(data.value(forKey: "username") as! String)
-//            print(data.value(forKey: "password") as! String)
-//            print(data.value(forKey: "age") as! String)
-//          }
-//        } catch {
-//          print("Failed")
-//        }
-//    }
-//
-//
-////    func fetchLevel(){
-////        /*get reference to appdelegate file*/
-////        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-////            return
-////        }
-////
-////      /*get reference of managed object context*/
-////        let managedContext = appDelegate.persistentContainer.viewContext
-////
-////      /*init fetch request*/
-////        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Scoreboard")
-////
-////      /*pass your condition with NSPredicate. We only want to delete those records which match our condition*/
-////        fetchRequest.predicate = NSPredicate(format: "level == %@" ,level)
-////        var retVal : [Scoreboard] = []
-////        do {
-////
-////          /*managedContext.fetch(fetchRequest) will return array of person objects [personObjects]*/
-////            let item = try managedContext.fetch(fetchRequest)
-////
-////          //  retVal = item
-//////            for i in item {
-//////
-//////                retVal = i
-//////              /*call delete method(aManagedObjectInstance)*/
-//////              /*here i is managed object instance*/
-//////                managedContext.delete(i)
-//////
-//////              /*finally save the contexts*/
-//////                try managedContext.save()
-//////
-//////              /*update your array also*/
-//////              people.remove(at: (people.index(of: i))!)
-//////            }
-////        } catch let error as NSError {
-////            print("Could not fetch. \(error), \(error.userInfo)")
-////        }
-////
-////    }
+
 
         
         
