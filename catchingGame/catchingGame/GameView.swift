@@ -145,8 +145,6 @@ class GameView: UIView {
                     }
                 }
                 
-
-                
                 else if(fruitCoordinates[i].0 == "kiwi") {
                     kiwiImage = self.resizeImage(image: kiwiImage, targetSize: CGSize(width: 50.0, height: 50.0))
                     if(fruitsCaught[i] == false && fruitsMissed[i] == false ){
@@ -188,15 +186,12 @@ class GameView: UIView {
     }
     
     @objc func update(){  //do collision detection here
-
-        
-        
         print("HIGH SCORE IN UPDATE: " + String(highScoreOverall))
         highScoreLabel.text = "High Score : " + String(highScoreOverall)
         
         fruitOptions = ["apple" : appleImage, "banana" : bananaImage, "orange" : orangeImage, "kiwi" : kiwiImage,  "pineapple" : pineappleImage]
         
-        if(catches % 3 == 0 && catches > 1  && increaseSpeed == true){
+        if(catches % 5 == 0 && catches > 1  && increaseSpeed == true){
             
              level += 1
             if(appearRate > 1){
