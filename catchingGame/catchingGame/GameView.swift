@@ -266,6 +266,8 @@ class GameView: UIView {
             catches = 0
             catchesLabel.text = "Catches: " + String(catches)
             lives = 3
+            level = 1
+            appearRate = 4
             livesLabel.text = "Lives: " + String(lives)
             //START OVER SCREEN
 //            startOverOrLevelUpLabel.isHidden = false
@@ -289,6 +291,10 @@ class GameView: UIView {
                 print("NEW HIGH SCORE!s")
                 self.updateData(newHighScore: Int64(catches), scoreboardToUpdate: scoreboard[0] as! Scoreboard)
             }
+            
+            fruitCoordinates.removeAll()
+            fruitsCaught.removeAll()
+            fruitsMissed.removeAll()
         }
         
         
